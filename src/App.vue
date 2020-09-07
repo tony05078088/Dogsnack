@@ -1,11 +1,19 @@
 <template>
-  <div id="app">
+<div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+      <router-link to="/about">About</router-link> |
+      <router-link to="/ingredient">Products</router-link> |
+      <router-link to="/portfolio">Shopping Cart</router-link> |
+      <strong class="navbar-text">Funds: {{ funds | currency }}</strong>
+   </div>
+    <div>
+                <transition name="slide" mode="out-in">
+                    <router-view></router-view>
+                </transition>
+</div>
+ <app-footer> </app-footer>
+</div>
 </template>
 
 <style lang="scss">
@@ -19,14 +27,32 @@
 
 #nav {
   padding: 30px;
-
   a {
     font-weight: bold;
     color: #2c3e50;
-
     &.router-link-exact-active {
       color: #42b983;
     }
   }
 }
+.navbar-text {
+ color: #777;
+}
 </style>
+
+<script>
+import Footer from '@/components/Footer.vue'
+export default {
+  components: {
+    appFooter: Footer
+  },
+  created () {
+    this.$store.dispatch('initStocks')
+  },
+  computed: {
+    funds () {
+      return this.$store.getters.funds
+    }
+  }
+}
+</script>
