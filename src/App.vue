@@ -7,10 +7,8 @@
       <router-link to="/portfolio">Shopping Cart</router-link> |
       <strong class="navbar-text">Funds: {{ funds | currency }}</strong>
    </div>
-    <div>
-                <transition name="slide" mode="out-in">
+    <div class="page">
                     <router-view></router-view>
-                </transition>
 </div>
  <app-footer> </app-footer>
 </div>
@@ -23,6 +21,9 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  position:relative;
+  width:100%;
+  min-height:100%
 }
 
 #nav {
@@ -37,6 +38,19 @@
 }
 .navbar-text {
  color: #777;
+}
+.page {
+  height: 100%;
+  padding-top:50px;
+  padding-bottom:50px;
+}
+app-footer {
+  width: 100%;
+  height:100px;/* footer的高度一定要是固定值*/
+  position:absolute;
+  bottom:0px;
+  left:0px;
+  background: #333;
 }
 </style>
 

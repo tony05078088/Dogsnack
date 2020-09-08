@@ -4,13 +4,13 @@
      <h6> Which one is your favorite dog? </h6>
          <button @click="getResult"> Change Dog!</button>
      <hr>
-    <img :src="dogpic" alt="" width="500px" height="500px">
+    <img :src="dogpic" alt="">
     </div>
 </template>
 
 <script>
 import axios from 'axios'
-
+const url = 'https://dog.ceo/api/breeds/image/random'
 export default {
   data () {
     return {
@@ -24,7 +24,7 @@ export default {
   },
   mounted: function () {
     axios
-      .get('https://dog.ceo/api/breeds/image/random')
+      .get(`${url}`)
       .then(reponse => { this.dogpic = reponse.data.message })
       .catch(err => { console.log(err) })
   },
@@ -43,5 +43,9 @@ export default {
 h1 {
   background-color: #128ced;
   font-family: 'Grandstander', cursive;
+}
+img {
+  max-width: 100%;
+  height: auto;
 }
 </style>
