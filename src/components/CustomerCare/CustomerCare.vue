@@ -9,9 +9,18 @@
       <div class="google-map" id="map">
       </div>
       <div class="location">
-      location
+        <h3>
+      Location
+        </h3>
      <div class="address">
-       新北市新店區大學街
+      New York, NY 10012, US
+     </div>
+     <div class="address">
+       Call Toll-Free: 1-800-672-4399
+        <small>(Available 10am-10pm ET, 7 days a week.)</small>
+     </div>
+     <div class="address">
+       info@gmail.com
      </div>
       </div>
     </div>
@@ -96,5 +105,14 @@ export default {
 .location {
   width: 50%;
   height: 400px;
+  background: #212529;
+  color: #fff;
 }
+h3 {
+  font-weight: 300;
+}
+.address {
+  padding-top: 10px;
+}
+
 </style>

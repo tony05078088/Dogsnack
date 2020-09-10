@@ -22,18 +22,15 @@
 
       <!-- Grid column -->
       <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
-        <h6 class="text-uppercase mb-4 font-weight-bold">Useful links</h6>
+        <h6 class="text-uppercase mb-4 font-weight-bold">Your order</h6>
         <p>
-          <a href="#!">Your Account</a>
+           <router-link to="/orderstatus" >Order Status</router-link>
         </p>
         <p>
-          <a href="#!">Become an Affiliate</a>
+           <router-link to="/shippingpolicy" >Shipping Policy</router-link>
         </p>
         <p>
-          <a href="#!">Shipping Rates</a>
-        </p>
-        <p>
-          <a href="#!">Help</a>
+            <router-link to="/helpcenter" >Help Center </router-link>
         </p>
       </div>
 

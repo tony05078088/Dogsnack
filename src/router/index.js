@@ -6,6 +6,9 @@ import Ingredient from '../components/Ingredients/Ingredients.vue'
 import Portfolio from '../components/Portfolio/Portfolio.vue'
 import CustomerCare from '../components/CustomerCare/CustomerCare.vue'
 import TermOfUse from '@/components/CustomerCare/TermOfUse.vue'
+import Orderstatus from '@/components/CustomerCare/OrderStatus.vue'
+import Shippingpolicy from '@/components/CustomerCare/ShippingPolicy.vue'
+import HelpCenter from '@/components/CustomerCare/HelpCenter.vue'
 
 Vue.use(VueRouter)
 
@@ -43,6 +46,21 @@ const routes = [
     path: '/termofuse',
     name: 'termofuse',
     component: TermOfUse
+  },
+  {
+    path: '/orderstatus',
+    name: 'orderstatus',
+    component: Orderstatus
+  },
+  {
+    path: '/shippingpolicy',
+    name: 'shippingpolicy',
+    component: Shippingpolicy
+  },
+  {
+    path: '/helpcenter',
+    name: 'helpcenter',
+    component: HelpCenter
   }
 ]
 

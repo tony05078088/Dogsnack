@@ -2,7 +2,7 @@
   <div>
   <div class="about">
     <h1>This is All About Border Collie</h1>
-    <div class="pet"> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRFASWyvB7qHfL_r9dmRhWdo_6EvZazwZkmqQ&usqp=CAU">  </div>
+    <div> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRFASWyvB7qHfL_r9dmRhWdo_6EvZazwZkmqQ&usqp=CAU">  </div>
   </div>
     <h6> 有關邊境牧羊犬 </h6>
     <div >
@@ -15,7 +15,7 @@
      <div>主要協助農場放牧，故稱「牧羊犬」。邊境牧羊犬以精力旺盛且容易學習雜技運動而聞名，且被學界認為是最聰明的犬種。</div>
       <br>
       <br>
-      <div class="description" >
+      <div class="description">
        <div class="text"> <strong >邊牧的物種分布</strong>
        <p class="item">原產於蘇格蘭邊境，具強烈的牧羊本能，被當成牧羊犬已有多年的歷史。現主要分布在四個國家：英國、美國、澳大利亞和紐西蘭。屬於工作狂型的犬種，不適合都市生活。全世界的牧羊工作，幾乎一半以上都由它們來擔任。有此一說：如果沒有牛羊給它看管，它就會看牧小孩。而且它天生就會牧羊。</p>
        </div>
@@ -25,7 +25,6 @@
       <div class="text"> <strong >邊牧的生活習性</strong>
        <p class="item">邊境牧羊犬是好動的工作犬，最適合養在鄉村。如果關著不給活動，此犬種很快就會變得憂鬱，開始搞破壞。此犬種智商高、學習力強、對讚美的迴響良好。牠們具備牧羊的天性，所以懷有保護家庭和地域的警戒心，也是優秀的看門犬，會照顧家裡的小孩。雖然牠們和孩童以及其他從小一起養大的寵物相處融洽，有時對陌生人很兇，像牧羊時那樣窮追不捨、緊咬不放。</p>
        </div>
-        <div class="container-seconds">
         <div class="text"> <strong >邊牧的優點</strong>
        <p class="item">邊境牧羊犬有犬類熊貓之稱，是因為它黑白花色的分布和熊貓相似，尤其是60天以下的幼犬，圓滾滾的體型、蹣跚的步態，更像是一隻小熊貓。當然邊牧也有其他顏色和白色的搭配，諸如紅白、藍白 、黃白、隕石色等等，但通常黑白的搭配被認為是最基礎和最標準的。</p>
         </div>
@@ -36,7 +35,6 @@
         </div>
         </div>
     </div>
-  </div>
   </div>
 </template>
 
@@ -56,15 +54,25 @@ export default {
    flex-wrap: wrap;
    width: 100%;
  }
- .container-seconds {
- display: flex;
- }
   .about {
-    background-color: aqua;
+    background-color:#333;
+  }
+  h1 {
+    color: #fff
   }
   .text {
     width: 31%;
     margin: 10px 15px;
+  }
+  @media (max-width: 1282px ) {
+    .description div {
+      width: 50%
+    }
+  }
+  @media (max-width: 568px ) {
+    .description div {
+      width: 100%
+    }
   }
 .slide-enter-active {
    animation: slide-in 200ms ease-out forwards;

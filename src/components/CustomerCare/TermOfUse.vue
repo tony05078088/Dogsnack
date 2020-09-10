@@ -1,12 +1,15 @@
 <template>
- <div>
+ <div class="termcontrol">
     <div class="item">
  <h2>Term of Use</h2>
  <p class="return">Depending on your banking institution, your refund will be credited back to your original payment method(s) in 3 to 5 business days.</p>
     </div>
     <div class="item">
  <h2>Return Policy</h2>
- <p class="return">Our return policy is simple and worry-free: If you're not 100% unconditionally satisfied with your pet supplies, you can return them within 365 days of purchase. If you would like to request a return or replacement, please send us a message with your order number.</p>
+ <p class="return">Our return policy is simple and worry-free:
+    If you're not 100% unconditionally satisfied with your pet supplies, you can return them within 365 days of purchase.
+    If you would like to request a return or replacement, please send us a message with your order number
+ </p>
     </div>
 <div class="item">
  <h2>Pricing</h2>
@@ -21,15 +24,20 @@ export default {
 }
 </script>
 <style scoped>
+.termcontrol {
+    display: flex;
+}
 .item {
     height: 200px;
-    width: 500px
+    width: 33% ;
+    padding: auto
 }
  h2 {
   display: block;
   margin-left: auto auto 5px 10px
 }
 .return {
-    width: 980px;
+    width: 50%;
+    margin: auto;
 }
 </style>
