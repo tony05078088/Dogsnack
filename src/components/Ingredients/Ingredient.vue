@@ -20,7 +20,7 @@
                     <button
                             class="btn btn-success"
                             @click="AddCart"
-                            :disabled=" +quantity <= 0 || !Number.isInteger(+quantity)"
+                            :disabled=" +quantity <= 0 || !Number.isInteger(+quantity) || insufficientFunds"
                     >{{ 'AddToCart' }}
                     </button>
                 </div>

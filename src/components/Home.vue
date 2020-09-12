@@ -12,7 +12,7 @@
 import axios from 'axios'
 const url = 'https://dog.ceo/api/breeds/image/random'
 export default {
-  data () {
+  data () {  
     return {
       dogpic: null
     }
