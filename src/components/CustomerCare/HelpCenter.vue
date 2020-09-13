@@ -1,20 +1,22 @@
 <template>
 <div class="termcontrol">
-    <div class="sidenav">
+    <div class="centerpage">
+      <div class="des">
+         <span class="sidenav">
   <a href="#about">Account</a>
   <a href="#services">Services</a>
   <a href="#clients">Clients</a>
   <a href="#contact">Payment</a>
-  </div>
-    <div class="centerpage">
+  </span>
        <section class="box">
-         <h1 class="box-title"> How can we help you?</h1>
+         <h1 class="box-title"> How Can We Help You?</h1>
          <p class="box-copy">
              Learn more about our shipping & delivery options, setting up an account, returns & refunds, payment options and more. Can’t find what you’re looking for?
              Contact customer care at 1-888-839-9638 or send us an email.
             </p>
         <button @click="contact" class="btn btn-primary">Contact </button>
        </section>
+      </div>
 </div>
 </div>
 </template>
@@ -34,10 +36,12 @@ export default {
     justify-content: center;
 }
 .centerpage {
-    flex-basis: 2;
+  flex-basis: 1;
+  position: relative;
 }
 .box {
     text-align: center;
+    height: 60vh;
 }
 .box-copy {
     font-weight: 400;
@@ -54,15 +58,15 @@ export default {
     margin-bottom: 10px;
 }
 .sidenav {
-  flex-basis: 1;
-  height: 100%;
+  display: inline-block;
+  position: absolute;
+  height: 35vh;
   width: 160px;
   z-index: 1;
   top: 0;
-  left: 20px;
+  left: 14%;
   background-color: #eee;
   overflow-x: hidden;
-  padding-top: 20px;
 }
 
 .sidenav a {

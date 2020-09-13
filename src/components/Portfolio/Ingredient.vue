@@ -6,6 +6,8 @@
     <p class="card-text2"> <strong>List Price: ${{ ingredient.listprice }}</strong></p>
     <p class="card-text"> <small>Price: ${{ ingredient.price }}</small> | Quantity {{ ingredient.quantity }}</p>
     <p class="card-text"> <small> You Save: {{ disCountRate }}%  </small></p>
+    <div class="shoppingcart">
+
      <div class="pull-left">
     <input
                             type="number"
@@ -24,6 +26,7 @@
                     </button>
  </div>
   </div>
+  </div>
 </div>
 </template>
 
@@ -34,11 +37,20 @@
     .card-img-top {
      height: 286px
    }
-   .pull-left {
-     float: left!important
+   .shoppingcart {
+     display: flex;
+     justify-content: space-between;
    }
-   pull-right {
+   .pull-left {
+     float: left!important;
+     padding-right:3px
+   }
+   .pull-right {
      float: right!important
+   }
+   .btn:active {
+     transform: translateY(2px);
+     box-shadow: 0 10px 20px rgba(0,0,0,.2);
    }
     .card {
     margin: 5px
@@ -51,7 +63,7 @@
     border: 1px solid transparent;
     display: block;
     width: 100%;
-    height: 34px;
+    height: 100%;
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.42857143;

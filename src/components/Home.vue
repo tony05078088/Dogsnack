@@ -12,7 +12,7 @@
 import axios from 'axios'
 const url = 'https://dog.ceo/api/breeds/image/random'
 export default {
-  data () {  
+  data () {
     return {
       dogpic: null
     }
@@ -43,6 +43,7 @@ export default {
 h1 {
   background-color: #128ced;
   font-family: 'Grandstander', cursive;
+  letter-spacing: 5px;
 }
 img {
   max-width: 100%;

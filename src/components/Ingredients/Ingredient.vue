@@ -44,8 +44,12 @@
      float: left!important;
      padding-right:3px
    }
-   pull-right {
+   .pull-right {
      float: right!important
+   }
+    .btn:active {
+     transform: translateY(2px);
+     box-shadow: 0 10px 20px rgba(0,0,0,.2);
    }
     .card {
     margin: 5px
@@ -58,7 +62,7 @@
     border: 1px solid transparent;
     display: block;
     width: 100%;
-    height: 34px;
+    height: 100%;
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.42857143;
