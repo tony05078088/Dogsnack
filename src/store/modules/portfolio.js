@@ -17,6 +17,7 @@ const mutations = {
     state.funds -= ingredientPrice * quantity
   },
   'SET_PORTFOLIO' (state, portfolio) {
+    console.log(portfolio)
     state.funds = portfolio.funds
     state.ingredients = portfolio.ingredientPortfolio ? portfolio.ingredientPortfolio : []
   },

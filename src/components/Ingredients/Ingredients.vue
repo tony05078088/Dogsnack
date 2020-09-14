@@ -13,7 +13,6 @@ export default {
   },
   computed: {
     ingredients () {
-      console.log(this.$store.getters)
       return this.$store.getters.ingredients
     }
   }

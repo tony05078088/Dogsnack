@@ -17,7 +17,7 @@ const actions = {
     commit('SET_STOCKS', food)
   }
 }
-
+// Getters 會暴露為store.getters對象,可以屬性的形式訪問
 const getters = {
   ingredients: state => {
     return state.ingredients
