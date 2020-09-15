@@ -5,16 +5,17 @@
          <button @click="getResult"> Change Dog!</button>
      <hr>
     <img :src="$store.state.dogpic" alt="dogPicture">
+      <h2> 寵物小常識</h2>
+    <div class="video">
+      <iframe class="drink" src="https://www.youtube.com/embed/EhB4IPmzSWQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe class="drink" src="https://www.youtube.com/embed/ZC4Xf8txWVo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe class="drink" src="https://www.youtube.com/embed/7Whc88ilQLI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
     </div>
 </template>
 
 <script>
 export default {
-  data () {
-    return {
-      dogpic: null
-    }
-  },
   computed: {
     funds () {
       return this.$store.getters.funds
@@ -44,5 +45,17 @@ img {
   object-fit: cover;
   width: 600px;
   height: 500px;
+}
+.video {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-around;
+}
+.drink {
+  width: 33%;
+  height: 350px;
+}
+h2 {
+  margin: 30px;
 }
 </style>

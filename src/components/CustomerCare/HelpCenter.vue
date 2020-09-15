@@ -14,7 +14,7 @@
              Learn more about our shipping & delivery options, setting up an account, returns & refunds, payment options and more. Can’t find what you’re looking for?
              Contact customer care at 1-888-839-9638 or send us an email.
             </p>
-        <button @click="contact" class="btn btn-primary">Contact </button>
+        <button @click="contact" class="btn btn-primary">Contact us </button>
        </section>
       </div>
 </div>

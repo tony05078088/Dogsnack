@@ -33,6 +33,15 @@
         <div class="text"> <strong >邊牧的缺點</strong>
        <p class="item">邊牧在自己的地盤上能夠憑藉聰明才智作威作福，但幾乎50%以上的邊牧甚至有被驚嚇後小便失禁的經歷。即使體形較大的成年邊牧，在陌生的地方面對陌生人的撫摩，也會抿著耳朵甚至翻著肚皮表現出完全地臣服。</p>
         </div>
+        <div class="text">
+          <iframe class="movieshow" src="https://www.youtube.com/embed/zxs9yXDGNMI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      <div class="text">
+        <iframe class="movieshow" src="https://www.youtube.com/embed/ttOW2CWjqwU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="text">
+        <iframe class="movieshow" src="https://www.youtube.com/embed/HtlhLfq-csg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
         </div>
     </div>
   </div>
@@ -62,7 +71,11 @@ export default {
   }
   .text {
     width: 31%;
-    margin: 10px 15px;
+    margin: 5px 10px;
+  }
+  .movieshow {
+    width: 100%;
+    height: 350px;
   }
   @media (max-width: 1282px ) {
     .description div {

@@ -1,6 +1,12 @@
 <template>
   <div class="container mt-4">
     <h2 class="text-center text-secondary pb-2">Contact us</h2>
+    <img src="https://img.alicdn.com/imgextra/i3/2207468236631/O1CN01bQ1MI21yr2uH7l7Sc_!!2207468236631.jpg" alt="">
+    <h1>Established in 2020</h1>
+    <p style="text align: center"> We are established in 2020,which sells the fancy Goods for Dogs</p>
+    <p style="text align: center"> High Quality,Health and Food Safety is our first priority </p>
+    <p style="text align: center"> Accomadation for short term is also Available </p>
+    <p style="text align: center"> Feel Free to contact us ! </p>
     <div class="map-container border rounded">
       <ul class="nav justify-content-center border-bottom">
         <!--營運地區 nav-->
@@ -20,7 +26,7 @@
         <small>(Available 10am-10pm ET, 7 days a week.)</small>
      </div>
      <div class="address">
-       info@gmail.com
+      Email: info@gmail.com
      </div>
       </div>
     </div>
@@ -101,11 +107,12 @@ export default {
 }
 .map-container {
   display: flex;
+  margin-top: 50px;
 }
 .location {
   width: 50%;
   height: 400px;
-  background: #212529;
+  background:#828282;
   color: #fff;
 }
 h3 {
@@ -114,5 +121,15 @@ h3 {
 .address {
   padding-top: 10px;
 }
-
+img {
+  border-style: none;
+  vertical-align: top;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 30px;
+}
+p {
+  font-family: Comic Sans MS;
+  margin-bottom: 20px;
+}
 </style>

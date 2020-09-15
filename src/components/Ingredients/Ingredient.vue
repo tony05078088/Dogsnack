@@ -30,6 +30,9 @@
 </template>
 
 <style scoped>
+   .card:hover {
+    box-shadow: 5px 5px 10px teal ;
+   }
     .danger {
         border: 1px solid red;
     }
