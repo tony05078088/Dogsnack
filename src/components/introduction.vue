@@ -2,7 +2,7 @@
   <div>
   <div class="about">
     <h1>This is All About Border Collie</h1>
-    <div> <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRFASWyvB7qHfL_r9dmRhWdo_6EvZazwZkmqQ&usqp=CAU">  </div>
+    <div> <img src="https://media.gettyimages.com/photos/border-collie-picture-id92744180?s=2048x2048">  </div>
   </div>
     <h6> 有關邊境牧羊犬 </h6>
     <div >

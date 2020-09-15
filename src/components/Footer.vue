@@ -78,7 +78,7 @@
           <ul class="list-unstyled list-inline">
             <li class="list-inline-item">
               <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                <i class="fab fa-facebook-f"></i>
+              <i class="fab fa-facebook"></i>
               </a>
             </li>
             <li class="list-inline-item">
@@ -93,7 +93,7 @@
             </li>
             <li class="list-inline-item">
               <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                <i class="fab fa-linkedin-in"></i>
+             <i class="fab fa-github"></i>
               </a>
             </li>
           </ul>

@@ -22,6 +22,7 @@ export default new Vuex.Store({
       axios
         .get(`${url}`)
         .then(response => {
+          console.log(response)
           commit('setDogImg', response)
         })
         .catch(err => { console.log(err) })

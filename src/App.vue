@@ -27,12 +27,16 @@
 }
 
 #nav {
-  padding: 30px;
+  padding: 25px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: black;
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: #999;
     &.router-link-exact-active {
-      color: #42b983;
+      color: #fff
     }
   }
 }

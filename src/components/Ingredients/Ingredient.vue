@@ -105,6 +105,7 @@ export default {
       }
       this.$store.dispatch('AddCart', order)
       this.quantity = 0
+      alert('Your Choice Has been added!')
     }
   }
 }

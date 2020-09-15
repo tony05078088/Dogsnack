@@ -17,7 +17,8 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    meta: {title: 'Border Collie' }
   },
   {
     path: '/about',
@@ -25,43 +26,51 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: Introduction
+    component: Introduction,
     // () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    meta: {title: 'About' }
   },
   {
     path: '/ingredient',
     name: 'Ingredient',
-    component: Ingredient
+    component: Ingredient,
+    meta: {title: 'Ingredient' }
   },
   {
     path: '/portfolio',
     name: 'Portfolio',
-    component: Portfolio
+    component: Portfolio,
+    meta: {title: 'Portfolio' }
   },
   {
     path: '/customercare',
     name: 'customercare',
-    component: CustomerCare
+    component: CustomerCare,
+    meta: {title: 'CustomerCare' }
   },
   {
     path: '/termofuse',
     name: 'termofuse',
-    component: TermOfUse
+    component: TermOfUse,
+    meta: {title: 'TermOfUse' }
   },
   {
     path: '/orderstatus',
     name: 'orderstatus',
-    component: Orderstatus
+    component: Orderstatus,
+    meta: {title: 'Orderstatus' }
   },
   {
     path: '/shippingpolicy',
     name: 'shippingpolicy',
-    component: Shippingpolicy
+    component: Shippingpolicy,
+    meta: {title: 'ShoppingPolicy' }
   },
   {
     path: '/helpcenter',
     name: 'helpcenter',
-    component: HelpCenter
+    component: HelpCenter,
+    meta: {title: 'HelpCenter' }
   }
 ]
 
@@ -70,5 +79,8 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes
 })
-
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title
+  next()
+})
 export default router
