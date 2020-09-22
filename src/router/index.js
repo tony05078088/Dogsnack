@@ -10,7 +10,10 @@ import TermOfUse from '@/components/CustomerCare/TermOfUse.vue'
 import Orderstatus from '@/components/CustomerCare/OrderStatus.vue'
 import Shippingpolicy from '@/components/CustomerCare/ShippingPolicy.vue'
 import HelpCenter from '@/components/CustomerCare/HelpCenter.vue'
+import Signup from '@/components/auth/signup.vue'
+import Signin from '@/components/auth/signin.vue'
 
+import store from '@/store/index.js'
 Vue.use(VueRouter)
 
 const routes = [
@@ -71,7 +74,26 @@ const routes = [
     name: 'helpcenter',
     component: HelpCenter,
     meta: {title: 'HelpCenter' }
-  }
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: Signup,
+    meta: {title: 'Signup Page' }  
+  },
+  {
+    path: '/signin',
+    name: 'signin',
+    component: Signin,
+    meta: {title: 'Signin Page' },
+    // beforeEnter(to, from, next) {
+    //  if (store.state.idToken) {
+    //    next()
+    //  } else {
+    //   next('/signup')  
+    //  }
+    // }
+  },
 ]
 
 const router = new VueRouter({

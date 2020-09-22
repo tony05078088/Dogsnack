@@ -5,7 +5,10 @@
       <router-link to="/about">About</router-link> |
       <router-link to="/ingredient">Products</router-link> |
       <router-link to="/portfolio">Shopping Cart</router-link> |
-      <strong class="navbar-text">Funds: {{ funds | currency }}</strong>
+      <router-link v-if="!auth" to="/signup">Sign up</router-link> |
+      <router-link v-if="!auth" to="/signin">Sign in</router-link> |
+        <button @click="onLogout" class="logout" v-if="auth">Logout</button>
+      <!-- <strong class="navbar-text">Funds: {{ funds | currency }}</strong> -->
    </div>
     <div class="page">
                     <router-view></router-view>
@@ -56,6 +59,13 @@ app-footer {
   left:0px;
   background: #333;
 }
+.logout {
+  background-color: transparent;
+  border: none;
+  font: inherit;
+  color: white;
+  cursor: pointer;
+}
 </style>
 
 <script>
@@ -66,10 +76,19 @@ export default {
   },
   created () {
     this.$store.dispatch('initStocks')
+    this.$store.dispatch('tryAutoLogin')
   },
   computed: {
     funds () {
       return this.$store.getters.funds
+    },
+    auth () {
+      return this.$store.getters.isAuthenticated
+    }
+  },
+  methods: {
+    onLogout () {
+      this.$store.dispatch('logout')
     }
   }
 }

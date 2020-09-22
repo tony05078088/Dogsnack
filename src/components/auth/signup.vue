@@ -4,11 +4,11 @@
     <div class="container">
 	<div class="row">
 		<div class="col-md-4 login-sec">
-		<h2 class="text-center">Login Now</h2>
+		<h2 class="text-center">Register Now</h2>
 		<form class="login-form" @submit.prevent="onSubmit">
   <div class="form-group">
-    <label for="exampleInputEmail1" class="text-uppercase">Username</label>
-    <input type="text" class="form-control" v-model="Username"  placeholder="Username">
+    <label for="exampleInputEmail1" class="text-uppercase">Email</label>
+    <input type="text" class="form-control" v-model="Email"  placeholder="Username">
   </div>
 
   <div class="form-group">
@@ -99,34 +99,26 @@ padding : 50px 0;
 </style>
 
 <script>
-import axios from '@/components/axios-auth.js'
 
 export default {
   data () {
     return {
-      Username: '',
+      Email: '',
       password: ''
     }
+  },
+  created () {
+    this.$store.dispatch('fetchUser')
   },
   methods: {
     onSubmit () {
       const formData = {
-        Username: this.Username,
-        password: this.password
+        email: this.Email,
+        password: this.password,
+        returnSecureToken: true
       }
       console.log(formData)
-      axios.post('accounts:signUp?key=AIzaSyAJD-32GmlamnMcYJ1GcASY1rJ3RBWj1X4', {
-        email: formData.Username,
-        password: formData.password,
-        returnSecureToken: true
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-        .then(res => console.log(res))
-        .catch(res => console.log(res))
+      this.$store.dispatch('signup', { email: formData.email, password: formData.password })
     }
   }
 }
