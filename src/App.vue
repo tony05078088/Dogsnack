@@ -8,7 +8,7 @@
       <router-link v-if="!auth" to="/signup">Sign up</router-link> |
       <router-link v-if="!auth" to="/signin">Sign in</router-link> |
         <button @click="onLogout" class="logout" v-if="auth">Logout</button>
-      <!-- <strong class="navbar-text">Funds: {{ funds | currency }}</strong> -->
+       <strong class="navbar-text">Funds: {{ funds | currency }}</strong>
    </div>
     <div class="page">
                     <router-view></router-view>
@@ -44,7 +44,7 @@
   }
 }
 .navbar-text {
- color: #777;
+ color: #FFF;
 }
 .page {
   height: 100%;

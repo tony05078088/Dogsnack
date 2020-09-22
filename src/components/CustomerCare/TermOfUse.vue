@@ -26,6 +26,7 @@ export default {
 <style scoped>
 .termcontrol {
     display: flex;
+    flex-wrap: wrap;
 }
 .item {
     height: 200px;
@@ -34,10 +35,15 @@ export default {
 }
  h2 {
   display: block;
-  margin-left: auto auto 5px 10px
+  margin-bottom: 10px
 }
 .return {
-    width: 50%;
+    width: 60%;
     margin: auto;
 }
+ @media (max-width: 850px ) {
+ .item {
+     width: 100%;
+ }
+ }
 </style>

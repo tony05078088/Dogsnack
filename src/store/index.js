@@ -12,12 +12,14 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     dogpic: null,
+    isLoading: null,
     idToken: null,
     userId: null,
     user: null
   },
   mutations: {
     setDogImg (state, response) {
+      state.isLoading = null
       state.dogpic = response.data.message
     },
     authUser (state, userData) {
@@ -34,7 +36,8 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getDogImg ({ commit }, response) {
+    getDogImg ({ commit, state }, response) {
+      state.isLoading = true
       globalaxios
         .get(`${url}`)
         .then(response => {

@@ -1,6 +1,9 @@
 <template>
    <div>
-    <img :src="$store.state.dogpic" alt="dogPicture">
+     <div class="fa-3x">
+     <i v-show="$store.state.isLoading" class="fas fa-sync fa-spin"></i>
+     </div>
+    <img :src="$store.state.dogpic" v-show="!$store.state.isLoading" alt="dogPicture">
      <h6> Buy me a treat? </h6>
       <router-link tag="button" class="btn btn-primary" to="/ingredient">Go!</router-link>
      <hr>
