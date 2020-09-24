@@ -61,6 +61,13 @@ const routes = [
     path: '/orderstatus',
     name: 'orderstatus',
     component: Orderstatus,
+    beforeEnter (to,from,next) {
+     if(store.state.idToken) {
+       next('/portfolio')
+     } else {
+      next('/signin')
+     }
+    },
     meta: {title: 'Orderstatus' }
   },
   {
@@ -85,14 +92,19 @@ const routes = [
     path: '/signin',
     name: 'signin',
     component: Signin,
-    meta: {title: 'Signin Page' },
-    // beforeEnter(to, from, next) {
-    //  if (store.state.idToken) {
-    //    next()
-    //  } else {
-    //   next('/signup')  
+    meta: {title: 'Signin Page'},
+    beforeEach(to, from, next) {
+      if( store.state.idToken) {
+        next('/ingredient')
+      }
+    }
+    //  beforeEnter(to, from, next) {
+    //   if ( store.state.idToken ) {
+    //     next({ name: '' })
+    //   } else  {
+    //    next()  
+    //   }
     //  }
-    // }
   },
 ]
 

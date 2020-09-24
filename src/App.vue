@@ -43,6 +43,11 @@
     }
   }
 }
+@media (max-width: 800px ) {
+ #nav {
+    flex-direction: column;;
+ }
+ }
 .navbar-text {
  color: #FFF;
 }

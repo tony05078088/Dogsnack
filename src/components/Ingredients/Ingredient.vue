@@ -57,6 +57,11 @@
     .card {
     margin: 5px
    }
+   @media (max-width: 800px ) {
+   .card {
+     width: 50%;
+ }
+ }
    .card-text2 {
      text-decoration: line-through;
      text-shadow: 0 0 black;

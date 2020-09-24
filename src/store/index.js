@@ -5,6 +5,7 @@ import axios from '@/components/axios-auth.js'
 import ingredients from './modules/ingredients'
 import portfolio from './modules/portfolio'
 import globalaxios from 'axios'
+import router from '../router'
 const url = 'https://dog.ceo/api/breeds/image/random'
 
 Vue.use(Vuex)
@@ -103,6 +104,7 @@ export default new Vuex.Store({
           localStorage.setItem('userId', res.data.localId)
           localStorage.setItem('expirationDate', expirationDate)
           dispatch('setLogoutTimer', res.data.expiresIn)
+          router.push('/ingredient')
         })
         .catch(res => console.log(res))
     },

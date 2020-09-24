@@ -28,5 +28,6 @@ export default {
 .dogsbone{
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 </style>
