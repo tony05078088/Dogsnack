@@ -1,112 +1,118 @@
 /* eslint-disable */
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Introduction from '../views/About.vue'
-import Ingredient from '../components/Ingredients/Ingredients.vue'
-import Portfolio from '../components/Portfolio/Portfolio.vue'
-import CustomerCare from '../components/CustomerCare/CustomerCare.vue'
-import TermOfUse from '@/components/CustomerCare/TermOfUse.vue'
-import Orderstatus from '@/components/CustomerCare/OrderStatus.vue'
-import Shippingpolicy from '@/components/CustomerCare/ShippingPolicy.vue'
-import HelpCenter from '@/components/CustomerCare/HelpCenter.vue'
-import Signup from '@/components/auth/signup.vue'
-import Signin from '@/components/auth/signin.vue'
-
-import store from '@/store/index.js'
+import Signin from "@/components/auth/signin.vue";
+import Signup from "@/components/auth/signup.vue";
+import HelpCenter from "@/components/CustomerCare/HelpCenter.vue";
+import Orderstatus from "@/components/CustomerCare/OrderStatus.vue";
+import Shippingpolicy from "@/components/CustomerCare/ShippingPolicy.vue";
+import TermOfUse from "@/components/CustomerCare/TermOfUse.vue";
+import store from "@/store/index.js";
+import Vue from "vue";
+import VueRouter from "vue-router";
+import CustomerCare from "../components/CustomerCare/CustomerCare.vue";
+import Ingredient from "../components/Ingredients/Ingredients.vue";
+import CommentPage from "../components/Pages/CommentsPage.vue";
+import Portfolio from "../components/Portfolio/Portfolio.vue";
+import Introduction from "../views/About.vue";
+import Home from "../views/Home.vue";
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
+    path: "/",
+    name: "Home",
     component: Home,
-    meta: {title: 'Border Collie' }
+    meta: { title: "Border Collie" }
   },
   {
-    path: '/about',
-    name: 'About',
+    path: "/about",
+    name: "About",
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: Introduction,
     // () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-    meta: {title: 'About' }
+    meta: { title: "About" }
   },
   {
-    path: '/ingredient',
-    name: 'Ingredient',
+    path: "/ingredient",
+    name: "Ingredient",
     component: Ingredient,
-    meta: {title: 'Ingredient' }
+    meta: { title: "Ingredient" }
   },
   {
-    path: '/portfolio',
-    name: 'Portfolio',
+    path: "/comment/id",
+    name: "CommentPage",
+    component: CommentPage,
+    meta: { title: "Comment" }
+  },
+  {
+    path: "/portfolio",
+    name: "Portfolio",
     component: Portfolio,
-    meta: {title: 'Portfolio' }
+    meta: { title: "Portfolio" }
   },
   {
-    path: '/customercare',
-    name: 'customercare',
+    path: "/customercare",
+    name: "customercare",
     component: CustomerCare,
-    meta: {title: 'CustomerCare' }
+    meta: { title: "CustomerCare" }
   },
   {
-    path: '/termofuse',
-    name: 'termofuse',
+    path: "/termofuse",
+    name: "termofuse",
     component: TermOfUse,
-    meta: {title: 'TermOfUse' }
+    meta: { title: "TermOfUse" }
   },
   {
-    path: '/orderstatus',
-    name: 'orderstatus',
+    path: "/orderstatus",
+    name: "orderstatus",
     component: Orderstatus,
-    beforeEnter (to,from,next) {
-     if(store.state.idToken) {
-       next('/portfolio')
-     } else {
-      next('/signin')
-     }
+    beforeEnter(to, from, next) {
+      if (store.state.idToken) {
+        next("/portfolio");
+      } else {
+        next("/signin");
+      }
     },
-    meta: {title: 'Orderstatus' }
+    meta: { title: "Orderstatus" }
   },
   {
-    path: '/shippingpolicy',
-    name: 'shippingpolicy',
+    path: "/shippingpolicy",
+    name: "shippingpolicy",
     component: Shippingpolicy,
-    meta: {title: 'ShoppingPolicy' }
+    meta: { title: "ShoppingPolicy" }
   },
   {
-    path: '/helpcenter',
-    name: 'helpcenter',
+    path: "/helpcenter",
+    name: "helpcenter",
     component: HelpCenter,
-    meta: {title: 'HelpCenter' }
+    meta: { title: "HelpCenter" }
   },
   {
-    path: '/signup',
-    name: 'signup',
+    path: "/signup",
+    name: "signup",
     component: Signup,
-    meta: {title: 'Signup Page' }  
+    meta: { title: "Signup Page" }
   },
   {
-    path: '/signin',
-    name: 'signin',
+    path: "/signin",
+    name: "signin",
     component: Signin,
-    meta: {title: 'Signin Page'},
+    meta: { title: "Signin Page" },
     beforeEach(to, from, next) {
-      if( store.state.idToken) {
-        next('/ingredient')
+      if (store.state.idToken) {
+        next("/ingredient");
       }
     }
     //  beforeEnter(to, from, next) {
     //   if ( store.state.idToken ) {
     //     next({ name: '' })
     //   } else  {
-    //    next()  
+    //    next()
     //   }
     //  }
-  },
-]
+  }
+];
 
 const router = new VueRouter({
   mode: 'history',
