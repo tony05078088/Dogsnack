@@ -3,10 +3,11 @@ module.exports = {
   env: {
     node: true
   },
-  extends: [
-    'plugin:vue/essential',
-    '@vue/standard'
-  ],
+  rules: {
+    quotes: [2, 'single', { avoidEscape: true }],
+    semi: [2, 'never']
+  },
+  extends: ['plugin:vue/essential', '@vue/standard', 'eslint:recommended'],
   parserOptions: {
     parser: 'babel-eslint'
   },

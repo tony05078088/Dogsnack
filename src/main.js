@@ -15,9 +15,9 @@ Vue.component('BaseButton', BaseButton)
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 axios.defaults.baseURL = 'https://dogsnack-be64d.firebaseio.com/'
-Vue.filter('currency', value => {
-  return '$' + value.toLocaleString()
-})
+// Vue.filter('currency', value => {
+//   return '$' + value.toLocaleString()
+// })
 
 new Vue({
   router,

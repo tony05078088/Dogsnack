@@ -1,13 +1,13 @@
+import axios from '@/components/axios-auth.js'
+import globalaxios from 'axios'
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from '@/components/axios-auth.js'
-
+import router from '../router'
+import Comment from './modules/comment'
 import ingredients from './modules/ingredients'
 import portfolio from './modules/portfolio'
-import globalaxios from 'axios'
-import router from '../router'
 const url = 'https://dog.ceo/api/breeds/image/random'
-
+const apiKey = 'AIzaSyAJD-32GmlamnMcYJ1GcASY1rJ3RBWj1X4'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -45,7 +45,9 @@ export default new Vuex.Store({
           console.log(response)
           commit('setDogImg', response)
         })
-        .catch(err => { console.log(err) })
+        .catch(err => {
+          console.log(err)
+        })
     },
     setLogoutTimer ({ commit }, expirationTime) {
       setTimeout(() => {
@@ -53,17 +55,20 @@ export default new Vuex.Store({
       }, expirationTime * 1000)
     },
     signup ({ commit, dispatch }, authData) {
-      console.log(authData)
-      axios.post('accounts:signUp?key=AIzaSyAJD-32GmlamnMcYJ1GcASY1rJ3RBWj1X4', {
-        email: authData.email,
-        password: authData.password,
-        returnSecureToken: true
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+      axios
+        .post(
+          `accounts:signUp?key=${apiKey}`,
+          {
+            email: authData.email,
+            password: authData.password,
+            returnSecureToken: true
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+        )
         .then(res => {
           alert('Sign up Successfully!')
           commit('authUser', {
@@ -71,7 +76,9 @@ export default new Vuex.Store({
             userId: res.data.localId
           })
           const now = new Date()
-          const expirationDate = new Date(now.getTime() + res.data.expiresIn * 1000)
+          const expirationDate = new Date(
+            now.getTime() + res.data.expiresIn * 1000
+          )
           localStorage.setItem('token', res.data.idToken)
           localStorage.setItem('userId', res.data.localId)
           localStorage.setItem('expirationDate', expirationDate)
@@ -81,16 +88,20 @@ export default new Vuex.Store({
         .catch(res => console.log(authData.email, authData.password))
     },
     login ({ commit, dispatch }, authData) {
-      axios.post('accounts:signInWithPassword?key=AIzaSyAJD-32GmlamnMcYJ1GcASY1rJ3RBWj1X4', {
-        email: authData.email,
-        password: authData.password,
-        returnSecureToken: true
-      },
-      {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+      axios
+        .post(
+          'accounts:signInWithPassword?key=AIzaSyAJD-32GmlamnMcYJ1GcASY1rJ3RBWj1X4',
+          {
+            email: authData.email,
+            password: authData.password,
+            returnSecureToken: true
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }
+        )
         .then(res => {
           console.log(res)
           alert('Sign In Successfully!')
@@ -99,7 +110,9 @@ export default new Vuex.Store({
             userId: res.data.localId
           })
           const now = new Date()
-          const expirationDate = new Date(now.getTime() + res.data.expiresIn * 1000)
+          const expirationDate = new Date(
+            now.getTime() + res.data.expiresIn * 1000
+          )
           localStorage.setItem('token', res.data.idToken)
           localStorage.setItem('userId', res.data.localId)
           localStorage.setItem('expirationDate', expirationDate)
@@ -135,7 +148,8 @@ export default new Vuex.Store({
         return
       }
       console.log(userData)
-      globalaxios.post('/users.json' + '?auth=' + state.idToken, userData)
+      globalaxios
+        .post('/users.json' + '?auth=' + state.idToken, userData)
         .then(res => console.log(res))
         .catch(error => console.log(error))
     },
@@ -143,18 +157,31 @@ export default new Vuex.Store({
       if (!state.idToken) {
         return
       }
-      globalaxios.get('/users.json' + '?auth=' + state.idToken)
+      globalaxios.get('/users.json' + '?auth=' + state.idToken).then(res => {
+        console.log(res)
+        const data = res.data
+        const users = []
+        for (const key in data) {
+          const user = data[key]
+          user.id = key
+          users.push(user)
+        }
+        console.log(users)
+        commit('storeUser', users[0])
+      })
+    },
+    sendComments (commit, data) {
+      console.log(data)
+      const id = data.id
+      globalaxios
+        .post(`https://dogsnack-be64d.firebaseio.com/comments/${id}.json`, data
+        )
         .then(res => {
           console.log(res)
-          const data = res.data
-          const users = []
-          for (const key in data) {
-            const user = data[key]
-            user.id = key
-            users.push(user)
-          }
-          console.log(users)
-          commit('storeUser', users[0])
+          commit('sendComment', res)
+        })
+        .catch(err => {
+          console.log(err)
         })
     }
   },
@@ -168,6 +195,7 @@ export default new Vuex.Store({
   },
   modules: {
     ingredients,
-    portfolio
+    portfolio,
+    Comments: Comment
   }
 })

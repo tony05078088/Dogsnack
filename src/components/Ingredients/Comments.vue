@@ -65,7 +65,6 @@
           />
           <label for="career">1 Stars</label>
         </div>
-        <p v-if="!areas.isValid">At least one expertise must be selected</p>
       </div>
       <p v-if="!formIsValid">Please fix the above errors and submit again</p>
       <base-button>Submit</base-button>
@@ -88,10 +87,6 @@ export default {
       },
       description: {
         val: '',
-        isValid: true
-      },
-      rate: {
-        val: null,
         isValid: true
       },
       areas: {
@@ -120,10 +115,6 @@ export default {
         this.description.isValid = false
         this.formIsValid = false
       }
-      if (!this.rate.val || this.rate.val < 0) {
-        this.rate.isValid = false
-        this.formIsValid = false
-      }
       if (this.areas.val.length === 0) {
         this.areas.isValid = false
         this.formIsValid = false
@@ -138,7 +129,6 @@ export default {
         first: this.firstName.val,
         last: this.lastName.val,
         desc: this.description.val,
-        rate: this.rate.val,
         areas: this.areas.val
       }
       // console.log(formData);

@@ -34,12 +34,55 @@
           >
             {{ "AddToCart" }}
           </button>
-          <button @click="goToComment">Leave a comment</button>
+          <button @click="goToComment(ingredient.id)">Leave a comment</button>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  props: ['ingredient'],
+  data () {
+    return {
+      quantity: 0
+    }
+  },
+  computed: {
+    funds () {
+      return this.$store.getters.funds
+    },
+    insufficientFunds () {
+      return this.quantity * this.ingredient.price > this.funds
+    },
+    disCountRate () {
+      return Math.round(
+        ((this.ingredient.listprice - this.ingredient.price) /
+          this.ingredient.listprice) *
+          100
+      )
+    }
+  },
+  methods: {
+    AddCart () {
+      const order = {
+        ingredientId: this.ingredient.id,
+        ingredientPrice: this.ingredient.price,
+        quantity: +this.quantity
+      }
+      this.$store.dispatch('AddCart', order)
+      this.quantity = 0
+      alert('Your Choice Has been added!')
+    },
+    goToComment (id) {
+      console.log(id)
+      // this.$router.push(`/ingredient/comment/${id}`)
+      this.$router.push('/comment/' + id)
+    }
+  }
+}
+</script>
 
 <style scoped>
 .card:hover {
@@ -94,44 +137,3 @@
   box-shadow: 1px 1px rgba(0, 0, 0, 0.075);
 }
 </style>
-<script>
-export default {
-  props: ['ingredient'],
-  data () {
-    return {
-      quantity: 0
-    }
-  },
-  computed: {
-    funds () {
-      return this.$store.getters.funds
-    },
-    insufficientFunds () {
-      return this.quantity * this.ingredient.price > this.funds
-    },
-    disCountRate () {
-      return Math.round(
-        ((this.ingredient.listprice - this.ingredient.price) /
-          this.ingredient.listprice) *
-          100
-      )
-    }
-  },
-  methods: {
-    AddCart () {
-      const order = {
-        ingredientId: this.ingredient.id,
-        ingredientPrice: this.ingredient.price,
-        quantity: +this.quantity
-      }
-      this.$store.dispatch('AddCart', order)
-      this.quantity = 0
-      alert('Your Choice Has been added!')
-    },
-    goToComment () {
-      console.log(this.$router)
-      this.$router.push('/ingredient/comment')
-    }
-  }
-}
-</script>

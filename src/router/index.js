@@ -40,9 +40,10 @@ const routes = [
     meta: { title: "Ingredient" }
   },
   {
-    path: "/comment/id",
+    path: "/comment/:id",
     name: "CommentPage",
     component: CommentPage,
+    props: true,
     meta: { title: "Comment" }
   },
   {
