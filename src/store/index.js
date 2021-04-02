@@ -16,7 +16,8 @@ export default new Vuex.Store({
     isLoading: null,
     idToken: null,
     userId: null,
-    user: null
+    user: null,
+    CommentsArray: []
   },
   mutations: {
     setDogImg (state, response) {
@@ -34,6 +35,9 @@ export default new Vuex.Store({
       state.idToken = null
       state.userId = null
       alert('Logout Successfully!')
+    },
+    getComments (state, ResponseArray) {
+      state.CommentsArray = ResponseArray
     }
   },
   actions: {
@@ -172,10 +176,8 @@ export default new Vuex.Store({
     },
     sendComments (commit, data) {
       console.log(data)
-      const id = data.id
       globalaxios
-        .post(`https://dogsnack-be64d.firebaseio.com/comments/${id}.json`, data
-        )
+        .post(`https://dogsnack-be64d.firebaseio.com/comments/${data.id}.json`, data)
         .then(res => {
           console.log(res)
           commit('sendComment', res)
@@ -183,6 +185,26 @@ export default new Vuex.Store({
         .catch(err => {
           console.log(err)
         })
+    },
+    async fetchComments (context, id) {
+      const response = await fetch(
+        `https://dogsnack-be64d.firebaseio.com/comments/${id}.json`
+      )
+      const responseData = await response.json()
+      console.log(responseData)
+      const ResponseArray = []
+      for (const key in responseData) {
+        const res = {
+          first: responseData[key].first,
+          last: responseData[key].last,
+          desc: responseData[key].desc,
+          id: responseData[key].id,
+          stars: responseData[key].stars
+        }
+        ResponseArray.push(res)
+      }
+      console.log(ResponseArray)
+      context.commit('getComments', ResponseArray)
     }
   },
   getters: {
@@ -191,6 +213,9 @@ export default new Vuex.Store({
     },
     isAuthenticated (state) {
       return state.idToken !== null
+    },
+    displayComments (state) {
+      return state.CommentsArray
     }
   },
   modules: {

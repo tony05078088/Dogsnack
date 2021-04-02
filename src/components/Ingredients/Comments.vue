@@ -33,37 +33,37 @@
         <p v-if="!description.isValid">Description must not be empty</p>
       </div>
 
-      <div class="form-controls" :class="{ invalid: !areas.isValid }">
+      <div class="form-controls" :class="{ invalid: !stars.isValid }">
         <h3>Stars of the Merchandise</h3>
         <div>
           <input
             type="radio"
-            id="frontend"
-            value="frontend"
-            v-model="areas.val"
-            @blur="clearValidity('areas')"
+            id="1star"
+            value="1"
+            v-model="stars.val"
+            @blur="clearValidity('stars')"
           />
-          <label for="frontend">3 Stars</label>
+          <label for="1star">3 Stars</label>
         </div>
         <div>
           <input
             type="radio"
-            id="backend"
-            value="backend"
-            v-model="areas.val"
-            @blur="clearValidity('areas')"
+            id="2star"
+            value="2"
+            v-model="stars.val"
+            @blur="clearValidity('stars')"
           />
-          <label for="backend">2 Stars</label>
+          <label for="2star">2 Stars</label>
         </div>
         <div>
           <input
             type="radio"
-            id="career"
-            value="career"
-            v-model="areas.val"
-            @blur="clearValidity('areas')"
+            id="3star"
+            value="3"
+            v-model="stars.val"
+            @blur="clearValidity('stars')"
           />
-          <label for="career">1 Stars</label>
+          <label for="3star">1 Stars</label>
         </div>
       </div>
       <p v-if="!formIsValid">Please fix the above errors and submit again</p>
@@ -74,7 +74,6 @@
 
 <script>
 export default {
-  props: ['id'],
   data () {
     return {
       firstName: {
@@ -89,8 +88,8 @@ export default {
         val: '',
         isValid: true
       },
-      areas: {
-        val: [],
+      stars: {
+        val: null,
         isValid: true
       },
       formIsValid: true
@@ -115,8 +114,8 @@ export default {
         this.description.isValid = false
         this.formIsValid = false
       }
-      if (this.areas.val.length === 0) {
-        this.areas.isValid = false
+      if (this.stars.val.length === 0) {
+        this.stars.isValid = false
         this.formIsValid = false
       }
     },
@@ -129,14 +128,15 @@ export default {
         first: this.firstName.val,
         last: this.lastName.val,
         desc: this.description.val,
-        areas: this.areas.val
+        stars: this.stars.val
       }
-      // console.log(formData);
+      console.log(formData)
       this.$emit('save-data', formData)
+      this.firstName.val = ''
+      this.lastName.val = ''
+      this.description.val = ''
+      this.stars.val = ''
     }
-  },
-  mounted () {
-    console.log('近來囉')
   }
 }
 </script>

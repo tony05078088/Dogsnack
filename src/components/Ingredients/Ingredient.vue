@@ -34,7 +34,12 @@
           >
             {{ "AddToCart" }}
           </button>
-          <button @click="goToComment(ingredient.id)">Leave a comment</button>
+          <button @click="goToComment(ingredient.id, true)">
+            Leave a comment
+          </button>
+          <button @click="goToComment(ingredient.id, false)">
+            See comments
+          </button>
         </div>
       </div>
     </div>
@@ -75,11 +80,19 @@ export default {
       this.quantity = 0
       alert('Your Choice Has been added!')
     },
-    goToComment (id) {
-      console.log(id)
+    goToComment (id, compose) {
       // this.$router.push(`/ingredient/comment/${id}`)
-      this.$router.push('/comment/' + id)
+      if (compose) {
+        // 要進入的是留評價的畫面
+        this.$router.push('/comment/' + id + '/compose')
+      } else {
+        // 進入的是看評價的畫面
+        this.$router.push('/comment/' + id + '/see')
+      }
     }
+    // SeeComment(id) {
+    //   this.$router.push("/comment/" + id);
+    // }
   }
 }
 </script>
