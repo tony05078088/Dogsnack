@@ -2,12 +2,6 @@
 <div class="termcontrol">
     <div class="centerpage">
       <div class="des">
-         <span class="sidenav">
-  <a href="#about">Account</a>
-  <a href="#services">Services</a>
-  <a href="#clients">Clients</a>
-  <a href="#contact">Payment</a>
-  </span>
        <section class="box">
          <h1 class="box-title"> How Can We Help You?</h1>
          <p class="box-copy">
@@ -57,7 +51,7 @@ export default {
     color: #000;
     margin-bottom: 10px;
 }
-.sidenav {
+/* .sidenav {
   display: inline-block;
   position: absolute;
   height: 35vh;
@@ -67,17 +61,5 @@ export default {
   left: 14%;
   background-color: #eee;
   overflow-x: hidden;
-}
-
-.sidenav a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 25px;
-  color: #818181;
-  display: block;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
+} */
 </style>
