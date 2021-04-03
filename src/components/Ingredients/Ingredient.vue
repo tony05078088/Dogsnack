@@ -24,7 +24,7 @@
         </div>
         <div class="pull-right">
           <button
-            class="btn btn-success"
+            class="btn btn-success "
             @click="AddCart"
             :disabled="
               +quantity <= 0 ||
@@ -34,12 +34,20 @@
           >
             {{ "AddToCart" }}
           </button>
-          <button @click="goToComment(ingredient.id, true)">
-            Leave a comment
-          </button>
-          <button @click="goToComment(ingredient.id, false)">
-            See comments
-          </button>
+          <div class="commentsArea">
+            <button
+              class="btn btn-sm btn-dark"
+              @click="goToComment(ingredient.id, true)"
+            >
+              Leave comment
+            </button>
+            <button
+              class="btn btn-sm btn-dark"
+              @click="goToComment(ingredient.id, false)"
+            >
+              See comments
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -97,7 +105,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .card:hover {
   box-shadow: 5px 5px 10px teal;
 }
@@ -114,6 +122,7 @@ export default {
 .pull-left {
   float: left !important;
   padding-right: 3px;
+  height:100%;
 }
 .pull-right {
   float: right !important;
@@ -148,5 +157,17 @@ export default {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 1px 1px rgba(0, 0, 0, 0.075);
+}
+.commentsArea {
+  width: 100%;
+  max-width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    margin:0.5rem
+  }
 }
 </style>
