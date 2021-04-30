@@ -122,7 +122,7 @@ export default {
 .pull-left {
   float: left !important;
   padding-right: 3px;
-  height:100%;
+  height:50%;
 }
 .pull-right {
   float: right !important;

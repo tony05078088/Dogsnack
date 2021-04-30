@@ -2,9 +2,10 @@
   <section>
     <base-card v-if="!needGetComments">
       <h2>Leave a Comment</h2>
-      <comment-form  @save-data="sendData"></comment-form>
+      <comment-form @save-data="sendData"></comment-form>
     </base-card>
     <base-forum v-else>
+     <i class="el-icon-arrow-left" @click="goback"></i>
       <h2>See Comments from Customers</h2>
       <each-comment
         v-for="comment in totalComments"
@@ -16,46 +17,55 @@
 </template>
 
 <script>
-import CommentForm from '../Ingredients/Comments.vue'
-import EachComment from '../Ingredients/CustomersComments.vue'
+import CommentForm from "../Ingredients/Comments.vue"
+import EachComment from "../Ingredients/CustomersComments.vue";
 export default {
-  props: ['id'],
+  props: ["id"],
   components: {
     CommentForm,
     EachComment
   },
   methods: {
-    sendData (data) {
-      data.id = this.id
-      this.$store.dispatch('sendComments', data)
+    goback() {
+      console.log("ok")
+      this.$router.replace('/ingredient')
     },
-    async getComments () {
+    sendData(data) {
+      data.id = this.id;
+      this.$store.dispatch("sendComments", data);
+    },
+    async getComments() {
       if (!this.needGetComments) {
         return
       }
       try {
-        await this.$store.dispatch('fetchComments', this.id)
+        await this.$store.dispatch("fetchComments", this.id);
       } catch (err) {
-        console.log('Fail to getComments' + err)
+        console.log("Fail to getComments" + err);
       }
     }
   },
   computed: {
-    totalComments () {
-      return this.$store.getters.displayComments
+    totalComments() {
+      return this.$store.getters.displayComments;
     },
-    needGetComments () {
-      if (this.$route.params.value === 'see') {
-        return true
+    needGetComments() {
+      if (this.$route.params.value === "see") {
+        return true;
       } else {
-        return false
+        return false;
       }
     }
   },
-  created () {
-    this.getComments()
+  created() {
+    this.getComments();
   }
-}
+};
 </script>
 
-<style scoped></style>
+<style scoped>
+.el-icon-arrow-left {
+ /* position: absolute;
+ left: 0% */
+}
+</style>
