@@ -2,11 +2,14 @@
   <section>
     <base-card v-if="!needGetComments">
       <h2>Leave a Comment</h2>
+      <i class="el-icon-arrow-left" @click="goback"></i>
       <comment-form @save-data="sendData"></comment-form>
     </base-card>
     <base-forum v-else>
-     <i class="el-icon-arrow-left" @click="goback"></i>
+      <div class="title">
+      <i class="el-icon-arrow-left" @click="goback"></i>
       <h2>See Comments from Customers</h2>
+      </div>
       <each-comment
         v-for="comment in totalComments"
         :key="comment.id"
@@ -17,7 +20,7 @@
 </template>
 
 <script>
-import CommentForm from "../Ingredients/Comments.vue"
+import CommentForm from "../Ingredients/Comments.vue";
 import EachComment from "../Ingredients/CustomersComments.vue";
 export default {
   props: ["id"],
@@ -27,8 +30,8 @@ export default {
   },
   methods: {
     goback() {
-      console.log("ok")
-      this.$router.replace('/ingredient')
+      console.log("ok");
+      this.$router.replace("/ingredient");
     },
     sendData(data) {
       data.id = this.id;
@@ -36,7 +39,7 @@ export default {
     },
     async getComments() {
       if (!this.needGetComments) {
-        return
+        return;
       }
       try {
         await this.$store.dispatch("fetchComments", this.id);
@@ -63,9 +66,15 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .el-icon-arrow-left {
- /* position: absolute;
- left: 0% */
+  cursor: pointer;
+}
+.title {
+ display: flex;
+ i {
+   width: 10%;
+   height:50%;
+ }
 }
 </style>

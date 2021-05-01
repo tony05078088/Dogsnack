@@ -38,12 +38,12 @@
         <div>
           <input
             type="radio"
-            id="1star"
-            value="1"
+            id="3star"
+            value="3"
             v-model="stars.val"
             @blur="clearValidity('stars')"
           />
-          <label for="1star">3 Stars</label>
+          <label for="3star">3 Stars</label>
         </div>
         <div>
           <input
@@ -58,12 +58,12 @@
         <div>
           <input
             type="radio"
-            id="3star"
-            value="3"
+            id="1star"
+            value="1"
             v-model="stars.val"
             @blur="clearValidity('stars')"
           />
-          <label for="3star">1 Stars</label>
+          <label for="1star">1 Stars</label>
         </div>
       </div>
       <p v-if="!formIsValid">Please fix the above errors and submit again</p>
