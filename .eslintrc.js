@@ -1,11 +1,15 @@
 module.exports = {
   root: true,
-  parser: "babel-eslint",
+  parser: "vue-eslint-parser",
   parserOptions: {
-    "strict": 0,
+    strict: 0,
     parser: "babel-eslint",
-     ecmaVersion: 6,
-    sourceType: "module"
+    ecmaVersion: 7,
+    sourceType: "module",
+    ecmaFeatures: {
+      jsx: true,
+      modules: true
+    }
   },
   env: {
     browser: true,
@@ -229,7 +233,7 @@ module.exports = {
       }
     ],
     "space-before-blocks": [2, "always"],
-    "space-before-function-paren": [2, "never"],
+    //"space-before-function-paren": [2, "never"],
     "space-in-parens": [2, "never"],
     "space-infix-ops": 2,
     "space-unary-ops": [

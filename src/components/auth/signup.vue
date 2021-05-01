@@ -24,7 +24,6 @@
     <button type="submit" class="btn btn-login float-right" >Submit</button>
   </div>
 </form>
-<div class="copy-text">Created with <i class="fa fa-heart"></i> by Grafreez</div>
 		</div>
 		<div class="col-md-8 banner-sec">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -101,13 +100,13 @@ padding : 50px 0;
 <script>
 
 export default {
-  data () {
+  data() {
     return {
       Email: '',
       password: ''
     }
   },
-  created () {
+  created() {
     this.$store.dispatch('fetchUser')
   },
   methods: {
