@@ -1,11 +1,23 @@
 <template>
   <div class="checkoutPage">
     <div>Checkout Page</div>
-    <p v-for="item in ingredients" :key="item.id">
-      {{ item.name }} For {{ item.quantity }} Each ${{ item.price }} ＝
-      {{ item.price * item.quantity }}
-    </p>
-    <p>Toal Amount to Paid: ${{ totalAmount }}</p>
+    <div v-if="ingredients.length > 0" class="checkout">
+      <el-table
+        :data="ingredients"
+        border
+        style="width: 100%"
+      >
+        <el-table-column prop="name" label="Item Name" width="180">
+        </el-table-column>
+        <el-table-column prop="price" label="Price" width="180">
+        </el-table-column>
+        <el-table-column prop="quantity" label="Quantity"> </el-table-column>
+      </el-table>
+      <p>Toal Amount to Paid: ${{ totalAmount }}</p>
+    </div>
+    <div v-else class="noItems">
+      <p>NOItems</p>
+    </div>
   </div>
 </template>
 
@@ -33,5 +45,8 @@ export default {
 .checkoutPage {
   display: flex;
   flex-direction: column;
+  .el-table {
+    flex: 0 1 auto;
+  }
 }
 </style>
