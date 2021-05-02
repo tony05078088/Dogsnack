@@ -1,8 +1,10 @@
 <template>
   <section>
     <base-card v-if="!needGetComments">
-      <h2>Leave a Comment</h2>
-      <i class="el-icon-arrow-left" @click="goback"></i>
+      <div class="title">
+        <i class="el-icon-arrow-left" @click="goback"></i>
+        <h2>Leave a Comment</h2>
+      </div>
       <comment-form @save-data="sendData"></comment-form>
       <el-dialog
         title="Comment"
@@ -96,6 +98,8 @@ export default {
 }
 .title {
   display: flex;
+  justify-content: center;
+  align-items: center;
   i {
     width: 10%;
     height: 50%;
