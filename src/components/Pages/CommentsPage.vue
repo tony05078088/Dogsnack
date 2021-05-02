@@ -4,6 +4,20 @@
       <h2>Leave a Comment</h2>
       <i class="el-icon-arrow-left" @click="goback"></i>
       <comment-form @save-data="sendData"></comment-form>
+      <el-dialog
+        title="Comment"
+        :visible.sync="centerDialogVisible"
+        width="30%"
+        center
+      >
+        <span>Leave Comment Successfully</span>
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="centerDialogVisible = false">Cancel</el-button>
+          <el-button type="primary" @click="centerDialogVisible = false"
+            >Confirm</el-button
+          >
+        </span>
+      </el-dialog>
     </base-card>
     <base-forum v-else v-loading="loading">
       <div class="title">
@@ -26,7 +40,8 @@ export default {
   props: ["id"],
   data() {
     return {
-      loading: true
+      loading: true,
+      centerDialogVisible: false
     };
   },
   components: {
@@ -40,6 +55,7 @@ export default {
     },
     sendData(data) {
       data.id = this.id;
+      this.centerDialogVisible = true;
       this.$store.dispatch("sendComments", data);
     },
     async getComments() {
