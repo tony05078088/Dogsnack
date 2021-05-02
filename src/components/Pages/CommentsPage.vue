@@ -5,10 +5,10 @@
       <i class="el-icon-arrow-left" @click="goback"></i>
       <comment-form @save-data="sendData"></comment-form>
     </base-card>
-    <base-forum v-else>
+    <base-forum v-else v-loading="loading">
       <div class="title">
-      <i class="el-icon-arrow-left" @click="goback"></i>
-      <h2>See Comments from Customers</h2>
+        <i class="el-icon-arrow-left" @click="goback"></i>
+        <h2>See Comments from Customers</h2>
       </div>
       <each-comment
         v-for="comment in totalComments"
@@ -24,6 +24,11 @@ import CommentForm from "../Ingredients/Comments.vue";
 import EachComment from "../Ingredients/CustomersComments.vue";
 export default {
   props: ["id"],
+  data() {
+    return {
+      loading: true
+    };
+  },
   components: {
     CommentForm,
     EachComment
@@ -46,6 +51,9 @@ export default {
       } catch (err) {
         console.log("Fail to getComments" + err);
       }
+      setTimeout(() => {
+        this.loading = false;
+      }, 500);
     }
   },
   computed: {
@@ -71,10 +79,10 @@ export default {
   cursor: pointer;
 }
 .title {
- display: flex;
- i {
-   width: 10%;
-   height:50%;
- }
+  display: flex;
+  i {
+    width: 10%;
+    height: 50%;
+  }
 }
 </style>
