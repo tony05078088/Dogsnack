@@ -78,22 +78,7 @@
           <ul class="list-unstyled list-inline">
             <li class="list-inline-item">
               <a class="btn-floating btn-sm rgba-white-slight mx-1">
-              <i class="fab fa-facebook"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a class="btn-floating btn-sm rgba-white-slight mx-1">
-                <i class="fab fa-google-plus-g"></i>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a class="btn-floating btn-sm rgba-white-slight mx-1">
-             <i class="fab fa-github"></i>
+             <i class="fab fa-github" @click="openGithub" ></i>
               </a>
             </li>
           </ul>
@@ -113,9 +98,23 @@
 
 </template>
 
+<script>
+export default {
+  methods: {
+    openGithub() {
+      const url = 'https://github.com/tony05078088'
+       window.open(url);
+    }
+  }
+}
+</script>
+
 <style scoped>
  footer {
   background-color: #45526e;
   color: #fff
+ }
+ .fa-github {
+   cursor: pointer;
  }
 </style>

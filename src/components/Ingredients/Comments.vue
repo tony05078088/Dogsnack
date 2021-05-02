@@ -1,0 +1,199 @@
+<template>
+    <form @submit.prevent="submitForm">
+      <div class="form-controls" :class="{ invalid: !firstName.isValid }">
+        <label for="firstname">FirstName</label>
+        <input
+          type="text"
+          id="firstname"
+          v-model.trim="firstName.val"
+          @blur="clearValidity('firstName')"
+        />
+        <p v-if="!firstName.isValid">FirstName must not be empty</p>
+      </div>
+
+      <div class="form-controls" :class="{ invalid: !lastName.isValid }">
+        <label for="lastname">LastName</label>
+        <input
+          type="text"
+          id="lastname"
+          v-model.trim="lastName.val"
+          @blur="clearValidity('lastName')"
+        />
+        <p v-if="!lastName.isValid">LastName must not be empty</p>
+      </div>
+
+      <div class="form-controls" :class="{ invalid: !description.isValid }">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          rows="5"
+          v-model.trim="description.val"
+          @blur="clearValidity('description')"
+        ></textarea>
+        <p v-if="!description.isValid">Description must not be empty</p>
+      </div>
+
+      <div class="form-controls" :class="{ invalid: !stars.isValid }">
+        <h3>Stars of the Merchandise</h3>
+        <div>
+          <input
+            type="radio"
+            id="3star"
+            value="3"
+            v-model="stars.val"
+            @blur="clearValidity('stars')"
+          />
+          <label for="3star">3 Stars</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="2star"
+            value="2"
+            v-model="stars.val"
+            @blur="clearValidity('stars')"
+          />
+          <label for="2star">2 Stars</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="1star"
+            value="1"
+            v-model="stars.val"
+            @blur="clearValidity('stars')"
+          />
+          <label for="1star">1 Stars</label>
+        </div>
+      </div>
+      <p v-if="!formIsValid">Please fix the above errors and submit again</p>
+      <base-button>Submit</base-button>
+    </form>
+
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      firstName: {
+        val: '',
+        isValid: true
+      },
+      lastName: {
+        val: '',
+        isValid: true
+      },
+      description: {
+        val: '',
+        isValid: true
+      },
+      stars: {
+        val: null,
+        isValid: true
+      },
+      formIsValid: true
+    }
+  },
+  methods: {
+    clearValidity (input) {
+    //   console.log(input);
+      this[input].isValid = true
+    },
+    validateForm () {
+      this.formIsValid = true
+      if (this.firstName.val === '') {
+        this.firstName.isValid = false
+        this.formIsValid = false
+      }
+      if (this.lastName.val === '') {
+        this.lastName.isValid = false
+        this.formIsValid = false
+      }
+      if (this.description.val === '') {
+        this.description.isValid = false
+        this.formIsValid = false
+      }
+      if (this.stars.val.length === 0) {
+        this.stars.isValid = false
+        this.formIsValid = false
+      }
+    },
+    submitForm () {
+      this.validateForm()
+      if (!this.formIsValid) {
+        return
+      }
+      const formData = {
+        first: this.firstName.val,
+        last: this.lastName.val,
+        desc: this.description.val,
+        stars: this.stars.val
+      }
+      console.log(formData)
+      this.$emit('save-data', formData)
+      this.firstName.val = ''
+      this.lastName.val = ''
+      this.description.val = ''
+      this.stars.val = ''
+    }
+  }
+}
+</script>
+
+<style scoped>
+.form-controls {
+  margin: 0.5rem 0;
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input[type='checkbox'] + label {
+  font-weight: normal;
+  display: inline;
+  margin: 0 0 0 0.5rem;
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid #ccc;
+  font: inherit;
+}
+
+input:focus,
+textarea:focus {
+  background-color: #f0e6fd;
+  outline: none;
+  border-color: #3d008d;
+}
+
+input[type='checkbox'] {
+  display: inline;
+  width: auto;
+  border: none;
+}
+
+input[type='checkbox']:focus {
+  outline: #3d008d solid 1px;
+}
+
+h3 {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.invalid label {
+  color: red;
+}
+
+.invalid input,
+.invalid textarea {
+  border: 1px solid red;
+}
+</style>
