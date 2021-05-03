@@ -1,7 +1,5 @@
 <template>
-  <auth
-  @auth="login"
-  :authWay="this.$route.path"></auth>
+  <auth @auth="login" :authWay="this.$route.path"></auth>
 </template>
 
 <script>
@@ -12,7 +10,10 @@ export default {
   },
   methods: {
     login(formData) {
-      this.$store.dispatch('login', { email: formData.email, password: formData.password })
+      this.$store.dispatch("login", {
+        email: formData.email,
+        password: formData.password
+      });
     }
   },
   mounted() {
