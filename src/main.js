@@ -12,6 +12,7 @@ import App from "./App.vue";
 import BaseButton from "./components/UI/BaseButton";
 import BaseCard from "./components/UI/BaseCard";
 import BaseForum from "./components/UI/BaseForum";
+// import "./components/UI/my-theme/index.less";
 import router from "./router";
 import store from "./store";
 

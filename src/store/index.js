@@ -7,6 +7,7 @@ import Comment from "./modules/comment";
 import ingredients from "./modules/ingredients";
 import portfolio from "./modules/portfolio";
 const url = "https://dog.ceo/api/breeds/image/random";
+const urlChange = "https://dog.ceo/api/breed";
 const apiKey = "AIzaSyAJD-32GmlamnMcYJ1GcASY1rJ3RBWj1X4";
 Vue.use(Vuex);
 
@@ -41,13 +42,25 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getDogImg({ commit, state }, response) {
+    getDogImg({ commit, state }) {
       state.isLoading = true;
       globalaxios
         .get(`${url}`)
         .then(response => {
           console.log(response);
           commit("setDogImg", response);
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    ChangeDogPhoto({ commit, state }, name) {
+      state.isLoading = true;
+      globalaxios
+        .get(`${urlChange}/${name}/images/random`)
+        .then(res => {
+          console.log(res);
+          commit("setDogImg", res);
         })
         .catch(err => {
           console.log(err);

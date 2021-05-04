@@ -86,7 +86,7 @@ export default {
       }
       this.$store.dispatch('AddCart', order)
       this.quantity = 0
-      alert('Your Choice Has been added!')
+      this.$Message.info('Your Choice Has been added');
     },
     goToComment (id, compose) {
       // this.$router.push(`/ingredient/comment/${id}`)
