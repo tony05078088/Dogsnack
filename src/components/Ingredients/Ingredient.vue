@@ -13,40 +13,44 @@
         <small> You Save: {{ disCountRate }}% </small>
       </p>
       <div class="shopping-cart">
-        <div class="pull-left">
-          <input
-            type="number"
-            class="input-control"
-            placeholder="Quantity"
-            v-model="quantity"
-            :class="{ danger: insufficientFunds }"
-          />
-        </div>
-        <div class="pull-right">
-          <button
-            class="btn btn-success "
-            @click="AddCart"
-            :disabled="
-              +quantity <= 0 ||
-                !Number.isInteger(+quantity) ||
-                insufficientFunds
-            "
-          >
-            {{ "AddToCart" }}
-          </button>
-          <div class="commentsArea">
-            <button
-              class="btn btn-sm btn-dark"
-              @click="goToComment(ingredient.id, true)"
-            >
-              Leave comment
-            </button>
-            <button
-              class="btn btn-sm btn-dark"
-              @click="goToComment(ingredient.id, false)"
-            >
-              See comments
-            </button>
+        <div class="content-center">
+          <div class="content-center__upper">
+            <input
+              type="number"
+              class="input-control"
+              placeholder="Quantity"
+              v-model="quantity"
+              :class="{ danger: insufficientFunds }"
+            />
+            <Button
+              type="info"
+              shape="circle"
+              icon="ios-add"
+              @click="AddCart"
+              :disabled="
+                +quantity <= 0 ||
+                  !Number.isInteger(+quantity) ||
+                  insufficientFunds
+              "
+            ></Button>
+          </div>
+          <div class="content-center__lower">
+            <div class="commentsArea">
+              <Button
+                :size="buttonSize"
+                @click="goToComment(ingredient.id, true)"
+                icon="ios-create"
+                type="success"
+                >LeaveComment</Button
+              >
+              <Button
+                :size="buttonSize"
+                @click="goToComment(ingredient.id, false)"
+                icon="ios-chatboxes"
+                type="info"
+                >SeeComments</Button
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -56,53 +60,50 @@
 
 <script>
 export default {
-  props: ['ingredient'],
-  data () {
+  props: ["ingredient"],
+  data() {
     return {
-      quantity: 0
-    }
+      quantity: 0,
+      buttonSize: "small"
+    };
   },
   computed: {
-    funds () {
-      return this.$store.getters.funds
+    funds() {
+      return this.$store.getters.funds;
     },
-    insufficientFunds () {
-      return this.quantity * this.ingredient.price > this.funds
+    insufficientFunds() {
+      return this.quantity * this.ingredient.price > this.funds;
     },
-    disCountRate () {
+    disCountRate() {
       return Math.round(
         ((this.ingredient.listprice - this.ingredient.price) /
           this.ingredient.listprice) *
           100
-      )
+      );
     }
   },
   methods: {
-    AddCart () {
+    AddCart() {
       const order = {
         ingredientId: this.ingredient.id,
         ingredientPrice: this.ingredient.price,
         quantity: +this.quantity
-      }
-      this.$store.dispatch('AddCart', order)
-      this.quantity = 0
-      this.$Message.info('Your Choice Has been added');
+      };
+      this.$store.dispatch("AddCart", order);
+      this.quantity = 0;
+      this.$Message.info("Your Choice Has been added");
     },
-    goToComment (id, compose) {
-      // this.$router.push(`/ingredient/comment/${id}`)
+    goToComment(id, compose) {
       if (compose) {
         // 要進入的是留評價的畫面
-        this.$router.push('/comment/' + id + '/compose')
+        this.$router.push("/comment/" + id + "/compose");
       } else {
         // 進入的是看評價的畫面
-        this.$router.push('/comment/' + id + '/see')
+        this.$router.push("/comment/" + id + "/see");
       }
     }
-    // SeeComment(id) {
-    //   this.$router.push("/comment/" + id);
-    // }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -117,16 +118,13 @@ export default {
 }
 .shopping-cart {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  .content-center__upper {
+    margin-bottom: 5%;
+  }
 }
-.pull-left {
-  float: left !important;
-  padding-right: 3px;
-  height:50%;
-}
-.pull-right {
-  float: right !important;
-}
+
 .btn:active {
   transform: translateY(2px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -145,10 +143,11 @@ export default {
 }
 .input-control {
   border: 1px solid transparent;
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width: auto;
   height: 100%;
   padding: 6px 12px;
+  margin-right: 5%;
   font-size: 14px;
   line-height: 1.42857143;
   color: #555;
@@ -161,13 +160,14 @@ export default {
 .commentsArea {
   width: 100%;
   max-width: 100%;
-  height: 50%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 
   button {
-    margin:0.5rem
+    margin: 0.2rem;
+    height: 100%;
   }
 }
 </style>
