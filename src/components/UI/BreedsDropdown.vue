@@ -1,6 +1,11 @@
 <template>
   <div>
-    <Dropdown style="margin-left: 20px" trigger="click" @on-click="setMe">
+    <Dropdown
+      style="margin-left: 20px"
+      trigger="click"
+      @on-click="setMe"
+      placement="bottom"
+    >
       <Button type="info" shape="circle" icon="ios-search">
         {{ selectedBreed }}
         <Icon type="ios-arrow-down"></Icon>
@@ -30,3 +35,10 @@ export default {
   }
 };
 </script>
+
+<style>
+.ivu-dropdown-menu {
+  max-height: 500px;
+  overflow: auto;
+}
+</style>

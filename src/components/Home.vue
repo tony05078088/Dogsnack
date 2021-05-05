@@ -21,10 +21,6 @@
         type="primary"
         shape="circle"
       ></Button>
-
-      <!-- <router-link tag="button" class="btn btn-primary" to="/ingredient"
-        >Go!</router-link
-      > -->
     </div>
     <breed-menu :breeds="BreedList" @updatePhoto="updateDogPic"></breed-menu>
     <hr />
