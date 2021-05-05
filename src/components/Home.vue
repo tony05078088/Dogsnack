@@ -18,7 +18,7 @@
         to="/ingredient"
         size="large"
         icon="ios-cart"
-        type="primary"
+        type="info"
         shape="circle"
       ></Button>
     </div>
@@ -92,9 +92,6 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* width: 500px;
-  height: 50%; */
-  /* max-width: 800px; */
   max-height: 800px;
   overflow: hidden;
   object-fit: cover;
