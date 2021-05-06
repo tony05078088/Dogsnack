@@ -25,7 +25,6 @@ export default {
       ingredients: 'ingredientPortfolio' // 在modules裡的portfolio,將ingredient資料下載至此
     }),
     ingredients() {
-      console.log(this.$store.getters)
       return this.$store.getters.ingredientPortfolio
     }
   },

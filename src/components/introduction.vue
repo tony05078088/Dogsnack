@@ -113,6 +113,11 @@ export default {
 h1 {
   color: #fff;
 }
+img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
 .text {
   width: 31%;
   margin: 5px 10px;
