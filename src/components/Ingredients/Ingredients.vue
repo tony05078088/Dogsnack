@@ -19,8 +19,8 @@ export default {
   },
   data() {
     return {
-      min: 0,
-      max: 0
+      min: null,
+      max: null
     };
   },
   computed: {
@@ -31,7 +31,11 @@ export default {
       const displayItem = this.ingredients.filter(el => {
         return el.price > this.min && el.price < this.max;
       });
-      return displayItem;
+      if (!this.min && !this.max) {
+        return this.ingredients;
+      } else {
+        return displayItem;
+      }
     }
   },
   methods: {
