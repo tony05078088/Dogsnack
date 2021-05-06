@@ -1,28 +1,55 @@
 <template>
-<div class="dogsbone">
-        <app-ingredient v-for="ingredient in ingredients"  :key="ingredient.id" :ingredient="ingredient"></app-ingredient>
-    </div>
+  <div class="dogsbone">
+    <price-filter @priceRangeChange="changeDisplayGoods" />
+    <app-ingredient
+      v-for="ingredient in displayGoods"
+      :key="ingredient.id"
+      :ingredient="ingredient"
+    ></app-ingredient>
+  </div>
 </template>
 
 <script>
-import Ingredient from './Ingredient.vue'
-
+import Ingredient from "./Ingredient.vue";
+import Filter from "./Filter";
 export default {
   components: {
-    appIngredient: Ingredient
+    appIngredient: Ingredient,
+    PriceFilter: Filter
+  },
+  data() {
+    return {
+      min: 0,
+      max: 0
+    };
   },
   computed: {
-    ingredients () {
-      return this.$store.getters.ingredients
+    ingredients() {
+      return this.$store.getters.ingredients;
+    },
+    displayGoods() {
+      const displayItem = this.ingredients.filter(el => {
+        return el.price > this.min && el.price < this.max;
+      });
+      return displayItem;
+    }
+  },
+  methods: {
+    changeDisplayGoods(min, max) {
+      this.min = min;
+      this.max = max;
     }
   }
-}
+};
 </script>
 
 <style scoped>
-.dogsbone{
+.dogsbone {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+.ivu-slider {
+  width: 100%;
 }
 </style>
