@@ -53,6 +53,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getDogImg");
+    console.log("mounted!");
     this.getBreedsList();
   },
   methods: {
@@ -75,6 +76,7 @@ export default {
       }
     },
     updateDogPic(name) {
+      console.log("changePicture!");
       this.$store.dispatch("ChangeDogPhoto", name);
     }
   }

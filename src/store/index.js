@@ -22,8 +22,8 @@ export default new Vuex.Store({
   },
   mutations: {
     setDogImg(state, response) {
-      state.isLoading = null;
       state.dogpic = response.data.message;
+      state.isLoading = null;
     },
     authUser(state, userData) {
       state.idToken = userData.token;
@@ -73,21 +73,12 @@ export default new Vuex.Store({
     },
     signup({ commit, dispatch }, authData) {
       axios
-        .post(
-          `accounts:signUp?key=${apiKey}`,
-          {
-            email: authData.email,
-            password: authData.password,
-            returnSecureToken: true
-          },
-          {
-            headers: {
-              "Content-Type": "application/json"
-            }
-          }
-        )
+        .post(`accounts:signUp?key=${apiKey}`, {
+          email: authData.email,
+          password: authData.password,
+          returnSecureToken: true
+        })
         .then(res => {
-          alert("Sign up Successfully!");
           commit("authUser", {
             token: res.data.idToken,
             userId: res.data.localId
@@ -121,7 +112,6 @@ export default new Vuex.Store({
         )
         .then(res => {
           console.log(res);
-          alert("Sign In Successfully!");
           commit("authUser", {
             token: res.data.idToken,
             userId: res.data.localId

@@ -9,13 +9,7 @@ export default {
     auth
   },
   methods: {
-    Register() {
-      const formData = {
-        email: this.Email,
-        password: this.password,
-        returnSecureToken: true
-      };
-      console.log(formData);
+    Register(formData) {
       this.$store.dispatch("signup", {
         email: formData.email,
         password: formData.password
